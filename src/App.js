@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router, Route, Switch, Link, Redirect,
+} from 'react-router-dom';
+import WorkZonePage from './pages/WorkZonePage';
+import TodoListPage from './pages/TodoListPage';
+import StatisticsPage from './pages/StatisticsPage';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
+export default () => (
+  <div className="App">
+    <Router>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Link to="/">Work Zone</Link>
+        <Link to="/todolist">To Do List</Link>
+        <Link to="/statistics">Statistics</Link>
       </header>
-    </div>
-  );
-}
-
-export default App;
+      <main>
+        <Switch>
+          <Route path="/" exact component={WorkZonePage} />
+          <Route path="/todolist" component={TodoListPage} />
+          <Route path="/statistics" component={StatisticsPage} />
+          <Redirect to="/" />
+        </Switch>
+      </main>
+    </Router>
+  </div>
+);
