@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class TodoForm extends Component {
-  inputRef = React.createRef;
+  inputRef = React.createRef();
 
   handleSubmit = (e) => {
     e.preventDefault();
