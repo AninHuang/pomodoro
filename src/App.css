@@ -1,33 +1,125 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Kalam&display=swap');
+
+* {
+  font-family: 'Kalam', cursive;
+}
+
+*, *:after, *:before {
+  margin: 0;
+  padding: 0;
+}
+
+.svg-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+}
+
+svg path {
+  transition: .1s;
+}
+
+main {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10vh 0 80vh;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+main::after {
+  content: '';
+  position: absolute;
+  top: calc(10vh + 1.618em);
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+}
+
+.todo-list {
+  width: 320px;
+  padding: 0 10px;
+  font-family: 'Microsoft JhengHei';
+  border-radius: 5px;
+  margin: 10px auto;
+}
+
+footer {
+  background: #dddee1;
+  padding: 5vh 0;
+  text-align: center;
+  position: relative;
+}
+
+.todo-list>h1 {
+  text-align: center;
+  margin: 8px 0 12px;
+  padding-bottom: 4px;
+  font-size: 28px;
+  font-weight: normal;
+  color: #68d;
+  border-bottom: 1px solid #ddd;
+}
+
+.todo-form {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.todo-form input {
+  width: 280px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Microsoft JhengHei';
+  color: #336;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes show {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-50px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: none;
   }
+}
+
+.todo-items {
+  padding-left: 0;
+  list-style: none;
+}
+
+.todo-item {
+  border-bottom: 1px solid #ddd;
+  padding: 24px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333;
+  transition: background-color .3s;
+  animation: show .3s ease-in-out;
+}
+
+.todo-item:first-child {
+  border-top: 1px solid #ddd;
+}
+
+.todo-item:before {
+  vertical-align: middle;
+  margin-right: 24px;
+  content: url('./img/check0.png');
+}
+
+.todo-item.done:before {
+  content: url('./img/check1.png');
+}
+
+.todo-item.done {
+  text-decoration: line-through;
+  color: #888;
+  background-color: #f6f6f6;
 }

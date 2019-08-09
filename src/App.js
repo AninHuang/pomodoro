@@ -5,12 +5,14 @@ import {
 import WorkZonePage from './pages/WorkZonePage';
 import TodoListPage from './pages/TodoListPage';
 import StatisticsPage from './pages/StatisticsPage';
-import Header from './components/Header';
+import SvgContainer from './components/SvgContainer';
+import Header from './styled-components/Header';
 import './App.css';
 
 export default () => (
   <div className="App">
     <Router>
+      <SvgContainer />
       <Header>
         <Link to="/">Work Zone</Link>
         <Link to="/todolist">To Do List</Link>
@@ -24,6 +26,9 @@ export default () => (
           <Redirect to="/" />
         </Switch>
       </main>
+      <footer>
+        <p>And, the footer.</p>
+      </footer>
     </Router>
   </div>
 );

@@ -12,32 +12,33 @@ export default class TodoList extends Component {
   }
 
   addItem = (text) => {
+    const newItem = {
+      id: this.state.list.length + 1,
+      text,
+      isDone: false,
+    };
+
     this.setState((state) => {
-      const item = {
-        id: state.list.length + 1,
-        text,
-        done: false,
-      };
-      const list = state.list.concat(item);
-      return { list };
+      const newList = state.list.concat(newItem);
+
+      return { list: newList };
     });
   }
 
   toggleItem = (id) => {
     this.setState((state) => {
-      const list = state.list.map((item) => {
+      const newList = state.list.map((item) => {
         if (item.id === id) {
           return {
             id: item.id,
             text: item.text,
-            done: !item.done,
+            isDone: !item.isDone,
           };
         }
         return item;
       });
-      return {
-        list,
-      };
+
+      return { list: newList };
     });
   }
 

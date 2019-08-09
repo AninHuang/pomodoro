@@ -9,8 +9,8 @@ export default class TodoForm extends Component {
 
     const inputText = this.inputRef.current.value;
 
-    this.inputRef.current.value = '';
     this.props.addItem(inputText);
+    this.inputRef.current.value = '';
   }
 
   render() {
